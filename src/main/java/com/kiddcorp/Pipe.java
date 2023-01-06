@@ -26,14 +26,17 @@ public class Pipe {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        KStream<String, String> source = builder.stream("streams-plaintext-input");
+        KStream<String, String> source = builder.stream("plaintext-input");
         source.flatMapValues(value -> Arrays.asList(value.toLowerCase(Locale.getDefault()).split("\\W+")))
               .groupBy((key, value) -> value)
               .count(Materialized.<String, Long, KeyValueStore<Bytes, byte[]>>as("counts-store"))
               .toStream()
-              .to("streams-wordcount-output", Produced.with(Serdes.String(), Serdes.Long()));
+              .to("wordcount-output", Produced.with(Serdes.String(), Serdes.Long()));
 
         final Topology topology = builder.build();
+        
+        System.out.println(topology.describe());
+        
         final KafkaStreams streams = new KafkaStreams(topology, props);
         final CountDownLatch latch = new CountDownLatch(1);
 
