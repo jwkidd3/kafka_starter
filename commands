@@ -1,1 +1,2 @@
+mvn package
 mvn exec:java -Dexec.mainClass="com.kiddcorp.App"
