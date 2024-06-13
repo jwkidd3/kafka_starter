@@ -10,7 +10,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 /**
  * Example of a simple producer
  */
-public class ProducerDemo {
+public class BasicProducer {
 
     public static void main(String[] args) {
 
