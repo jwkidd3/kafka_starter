@@ -1,2 +1,4 @@
 mvn package
 mvn exec:java -Dexec.mainClass="com.kiddcorp.App"
+mvn exec:java -Dexec.mainClass="com.kiddcorp.ConsumerDemo"
+mvn exec:java -Dexec.mainClass="com.kiddcorp.ProducerDemoWithCallback"
