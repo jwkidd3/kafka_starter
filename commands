@@ -2,3 +2,7 @@ mvn package
 mvn exec:java -Dexec.mainClass="com.kiddcorp.App"
 mvn exec:java -Dexec.mainClass="com.kiddcorp.ConsumerDemo"
 mvn exec:java -Dexec.mainClass="com.kiddcorp.ProducerDemoWithCallback"
+
+
+
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic wordcount-output --property print.key=true --property key.separator=" : " --key-deserializer "org.apache.kafka.common.serialization.StringDeserializer" --value-deserializer "org.apache.kafka.common.serialization.LongDeserializer"
